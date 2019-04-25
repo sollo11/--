@@ -1,3 +1,4 @@
-# UUID                 	Group Name
+# UUID                                  	Group Name
 #
-mdb:chromeos-ci-oncalls	mdb/chromeos-ci-oncalls
+1ee41615a47cfc746b7920ac4e976c1722b35781	chromiumos-staging-bot
+mdb:chromeos-ci-oncalls                 	mdb/chromeos-ci-oncalls
