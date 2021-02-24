@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - "10"
+
+services:
+  - docker
+
+before_install:
+  - docker build -t rabbitmq:official-alpine-with-webstomp rabbitmq/
+  - docker run -d --hostname rabbitmq --name rabbitmq -p 15674:15674 rabbitmq:official-alpine-with-webstomp
+
+before_script:
+  - docker exec rabbitmq rabbitmqctl status
+
+script:
+  - npm run lint && npm run karma
+  - npm run build && npm pack
+  - git clone --depth 1 https://github.com/stomp-js/ng2-stompjs.git && cd ng2-stompjs && npm ci && npm i ../stomp-rx-stomp-*.tgz && ng test && cd ..
